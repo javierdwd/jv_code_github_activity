@@ -9,6 +9,7 @@ const getUserRepositories = async () => {
 };
 
 const resolveQuery = async (data) => state => {
+  const { ignoreRepository } = state;
   const result = {};
 
   result.user = {
@@ -20,6 +21,10 @@ const resolveQuery = async (data) => state => {
 
   if(data.user.repositories) {
     data.user.repositories.edges.forEach(({ node }) => {
+      if(ignoreRepository.indexOf(node.name) > -1) {
+        return;
+      }
+
       const repository = {
         name: node.name,
         id: node.id,
@@ -57,6 +62,7 @@ class GithubActivity extends React.Component {
       user: null,
       repositories: null,
       errors: null,
+      ignoreRepository: [],
 
       ...props
     };
