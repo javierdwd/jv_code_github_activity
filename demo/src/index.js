@@ -3,6 +3,8 @@ import {render} from 'react-dom'
 
 import Example from '../../src'
 
+import './demo_styles.css'
+
 class Demo extends Component {
   render() {
     return <div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import User from './components/User'
+import User from './components/User';
+import Repository from './components/Repository';
 
 const getUserRepositories = async () => {
   const response =  require('./data/dataMockup1.json');
@@ -87,12 +88,27 @@ class GithubActivity extends React.Component {
     } = this.state;
 
     return (
-      <div className="github-activity">
-        {errors && <div class="error">Unexpected error. Data could not be loaded.</div>}
+      <div className="c-git-activity">
+        {errors && <div class="c-git-activity__error-msg">Unexpected error. Data could not be loaded.</div>}
 
         {!errors && user && (
-          <div className="data">
-            <User user={user} login={login} />
+          <User user={user} login={login} />
+        )}
+
+        {repositories && repositories.length && (
+          <div className="repositories">
+            {
+              repositories.map(x => {
+                return <Repository
+                  key={x.id}
+                  name={x.name}
+                  id={x.id}
+                  url={x.url}
+                  description={x.description}
+                  commits={x.commits}
+                />
+              })
+            }
           </div>
         )}
       </div>

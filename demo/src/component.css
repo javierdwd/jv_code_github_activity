@@ -1,0 +1,22 @@
+.c-git-activity {
+  margin: 4rem auto 0;
+  max-width: 800px;
+}
+
+.c-git-activity__error-msg {
+  background-color: #C33;
+  color: white;
+  line-height: 1.8;
+  padding: 0.4rem 1.2rem;
+}
+
+.c-git-activity__user {
+  font-size: 1.2em;
+}
+
+.c-git-user__name {
+  font-weight: 600;
+}
+.c-git-user__url {
+  float: right;
+}
