@@ -20,3 +20,36 @@
 .c-git-user__url {
   float: right;
 }
+
+.c-git-activity__repositories {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.c-git-repository {
+  flex-basis: 48%;
+}
+.c-git-repository__name {
+  font-size: 1.8rem;
+}
+.c-git-repository__description {
+  border-bottom: 1px dotted #333;
+  line-height: 1.6;
+  margin: .4rem;
+}
+.c-git-repository__commits-all {
+  display: block;
+  margin: .6rem auto 0;
+  max-width: 150px;
+  text-align: center;
+}
+
+.c-git-activity__commits {
+  margin: 1.5rem 0;
+}
+.c-git-commit__message {
+  display: block;
+  line-height: 1.2;
+  margin: .4rem;
+}

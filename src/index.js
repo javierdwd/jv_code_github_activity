@@ -25,10 +25,13 @@ const resolveQuery = async (data) => state => {
         id: node.id,
         url: node.url,
         description: node.description,
-        commits: []
+        commits: [],
       };
 
       try {
+        repository.commitsTotalCount = node.defaultBranchRef.target.history.totalCount;
+        repository.commitListUrl = `${node.url}/commits/${node.defaultBranchRef.name}`;
+
         const latestCommits = node.defaultBranchRef.target.history.edges;
 
         repository.commits = latestCommits.map(({ node }) => node);
@@ -36,7 +39,6 @@ const resolveQuery = async (data) => state => {
       } catch(error) {
         console.log(error);
       }
-
 
       result.repositories.push(repository);
     });
@@ -96,20 +98,16 @@ class GithubActivity extends React.Component {
         )}
 
         {repositories && repositories.length && (
-          <div className="repositories">
+          <section className="c-git-activity__repositories">
             {
               repositories.map(x => {
                 return <Repository
                   key={x.id}
-                  name={x.name}
-                  id={x.id}
-                  url={x.url}
-                  description={x.description}
-                  commits={x.commits}
+                  {... x}
                 />
               })
             }
-          </div>
+          </section>
         )}
       </div>
     );
