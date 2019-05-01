@@ -97,7 +97,7 @@ class GithubActivity extends React.Component {
           <User user={user} login={login} />
         )}
 
-        {repositories && repositories.length && (
+        {(repositories && repositories.length) ? (
           <section className="c-git-activity__repositories">
             {
               repositories.map(x => {
@@ -108,7 +108,7 @@ class GithubActivity extends React.Component {
               })
             }
           </section>
-        )}
+        ) : null}
       </div>
     );
   }

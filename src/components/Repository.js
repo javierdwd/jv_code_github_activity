@@ -26,7 +26,7 @@ function Repository(props) {
         {description}
       </p>
 
-      {commits && commits.length && (
+      {(commits && commits.length) ? (
         <div className="c-git-activity__commits">
           {
             commits.map(x => {
@@ -46,7 +46,7 @@ function Repository(props) {
             View all
           </a>
         </div>
-      )}
+      ) : null}
 
     </article>
   );
