@@ -7,7 +7,8 @@ class Demo extends Component {
   render() {
     return <div>
       <h1>jv_code_github_activity_component Demo</h1>
-      <Example/>
+
+      <Example login="javierdwd" />
     </div>
   }
 }
