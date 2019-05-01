@@ -2,8 +2,34 @@ import React from 'react';
 import User from './components/User';
 import Repository from './components/Repository';
 
-const getUserRepositories = async () => {
-  const response =  require('./data/dataMockup1.json');
+const ENDPOINT = 'https://wt-7aae5801f0beb40510fbf7db372fc5c9-0.sandbox.auth0-extend.com/jv_code_git_repositories';
+
+const getUserRepositories = async (useCache = true, cacheExpiration = 24) => {
+  const cacheEnabled = useCache && window.localStorage;
+  let localData;
+
+  if(cacheEnabled) {
+    localData = window.localStorage.getItem('gb-recent-activity');
+
+    if(localData) {
+      localData = JSON.parse(localData);
+      let diffHours = Math.abs(localData.createdAt - Date.now()) / 3600000;
+
+      if(parseInt(diffHours) <= cacheExpiration) {
+        return localData.response;
+      }
+    }
+  }
+
+  const request = await fetch(ENDPOINT);
+  const response = await request.json();
+
+  if(cacheEnabled) {
+    window.localStorage.setItem('gb-recent-activity', JSON.stringify({
+      createdAt: Date.now(),
+      response
+    }));
+  }
 
   return response;
 };
@@ -63,6 +89,8 @@ class GithubActivity extends React.Component {
       repositories: null,
       errors: null,
       ignoreRepository: [],
+      useCache: true,
+      cacheExpiration: 6,
 
       ...props
     };
@@ -74,7 +102,10 @@ class GithubActivity extends React.Component {
 
   async onFetchFromGithub() {
     try {
-      const { data, errors = null } = await getUserRepositories();
+      const { data, errors = null } = await getUserRepositories(
+        this.state.useCache,
+        this.state.cacheExpiration
+      );
 
       this.setState({errors});
 
