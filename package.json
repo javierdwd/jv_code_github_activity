@@ -1,7 +1,7 @@
 {
-  "name": "jv_code_github_activity_component",
+  "name": "jv_code_github_activity",
   "version": "1.0.0",
-  "description": "jv_code_github_activity_component React component",
+  "description": "jv_code_github_activity React component",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
