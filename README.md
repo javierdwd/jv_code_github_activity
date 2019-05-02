@@ -1,16 +1,5 @@
-# jv_code_github_activity_component
+# JV Code • Github_Activity_Component
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+Componente React que lista la actividad de un usuario en GitHub.
 
-Describe jv_code_github_activity_component here.
-
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[NWB](https://github.com/insin/nwb/) + [React](https://reactjs.org) + [Webtask](https://webtask.io)
