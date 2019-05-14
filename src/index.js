@@ -145,7 +145,7 @@ class GithubActivity extends React.Component {
               })
             }
           </section>
-        ) : null}
+        ) : <div className="c-git-activity__loading">Loading...</div> }
       </div>
     );
   }
