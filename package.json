@@ -4,6 +4,7 @@
   "description": "jv_code_github_activity React component",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "private": true,
   "files": [
     "css",
     "es",
